@@ -1,9 +1,11 @@
-//
-// Created by naivehobo on 5/7/19.
-//
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Author: Sarthak Mittal
+ *
+ */
 
-#ifndef FAKE_PLANNER_FAKEPLANNER_H
-#define FAKE_PLANNER_FAKEPLANNER_H
+#pragma once
 
 #include <ros/ros.h>
 
@@ -70,5 +72,3 @@ class FakePlanner {
   }
 
 };
-
-#endif //FAKE_PLANNER_FAKEPLANNER_H

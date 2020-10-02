@@ -4,17 +4,7 @@
 
 #include "fake_planner/FakePlanner.h"
 
-#include <ros/ros.h>
 #include <cmath>
-
-#include <fake_planner/SetMaxVel.h>
-
-#include <std_msgs/Bool.h>
-#include <geometry_msgs/Point.h>
-#include <geometry_msgs/PoseStamped.h>
-#include <nav_msgs/Odometry.h>
-
-#include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
 FakePlanner::FakePlanner() : private_nh_("~"), tf_listener_(tf_buffer_)
 {
@@ -116,8 +106,7 @@ void FakePlanner::run()
         }
         else if (enable_orientation_alignment_ && std::abs(angular_displacement) > orientation_tolerance_)
         {
-
-          ("Angular Displacement: %lf", angular_displacement);
+          ROS_INFO("Angular Displacement: %lf", angular_displacement);
 
           double angular_speed = angular_displacement / time_to_align_;
 
