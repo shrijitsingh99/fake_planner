@@ -17,6 +17,7 @@
 #include <tf2/transform_datatypes.h>
 #include <tf2_ros/transform_listener.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
+#include <tf2/LinearMath/Quaternion.h>
 
 #include <string>
 
@@ -45,13 +46,17 @@ class FakePlanner {
   tf2_ros::Buffer tf_buffer_;
   tf2_ros::TransformListener tf_listener_;
 
+  double planner_rate_;
   double max_angular_speed_;
   double max_linear_speed_;
-  double linear_tolerance_;
-  double angular_tolerance_;
-  double time_to_x_;
-  double time_to_angle_;
+  double position_tolerance_;
+  double orientation_tolerance_;
+  double heading_tolerance_;
+  double time_to_pos_;
+  double time_to_heading_;
+  double time_to_align_;
   bool is_goal_set_;
+  bool enable_orientation_alignment_;
 
   std::string goal_topic_;
   std::string cmd_topic_;
@@ -61,7 +66,7 @@ class FakePlanner {
   geometry_msgs::PoseStamped goal_;
 
   double euclideanDistance(double x, double y) {
-    return sqrt(pow(x, 2) + pow(y, 2));
+    return std::sqrt(std::pow(x, 2) + std::pow(y, 2));
   }
 
 };

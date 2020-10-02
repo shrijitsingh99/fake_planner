@@ -10,8 +10,7 @@
 int main(int argc, char** argv) {
   ros::init(argc, argv, "fake_planner");
 
-  auto planner = FakePlanner();
-
+  FakePlanner planner;
   planner.run();
 
   ros::spin();
